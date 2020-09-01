@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEME</title>
+    <style>
+      .main-container {
+        background: black;
+        width: 60%;
+        height: 89vh;
+        margin: 5vh auto;
+        border-radius: 3px;
+      }
+
+      #i1,
+      #i2 {
+        border-radius: 3px;
+        padding: 5px;
+        margin: 10px;
+        width: 45%;
+        background: black;
+        border: 1px solid white;
+      }
+
+      #i1:focus,
+      #i2:focus {
+        outline: 0;
+        background: white;
+      }
+
+      .main {
+        font-size: 1.5rem;
+        border-radius: 3px;
+        text-align: center;
+        position: relative;
+        color: white;
+        width: 90%;
+        height: 71vh;
+        margin: 5px auto;
+      }
+      #p2 {
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        right: 20px;
+      }
+      #p1 {
+        position: absolute;
+        top: 0;
+        left: 20px;
+        right: 20px;
+      }
+      #btn {
+        margin: 5px 40%;
+        border-radius: 3px;
+        padding: 6px;
+        cursor: pointer;
+        border: none;
+        color: #fff;
+        background: none;
+      }
+
+      #btn:hover {
+        background: #fff;
+        color: #000;
+      }
+      #btn:focus {
+        outline: 0;
+      }
+
+      #img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 3px;
+      }
+      #in {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div id="in">
+        <input class="ins" type="text" id="i1" />
+        <input class="ins" type="text" id="i2" />
+      </div>
+      <div class="main">
+        <img id="img" alt="" src="https://via.placeholder.com/600/92c952" />
+
+        <p id="p1"></p>
+        <p id="p2"></p>
+      </div>
+
+      <button id="btn">Get Image</button>
+    </div>
+  </body>
+  <script>
+    const l1 = document.querySelector("#i1");
+    const l2 = document.querySelector("#i2");
+    const p1 = document.querySelector("#p1");
+    const p2 = document.querySelector("#p2");
+    const btn = document.querySelector("#btn");
+    const img = document.querySelector("#img");
+
+    const changeInput = (e) => {
+      p1.textContent = e.target.value;
+    };
+    const changeInput2 = (e) => {
+      p2.textContent = e.target.value;
+    };
+    let images = [
+      "https://via.placeholder.com/600/92c952",
+      "https://via.placeholder.com/600/771796",
+      "https://via.placeholder.com/600/24f355",
+      "https://via.placeholder.com/600/e2223e",
+    ];
+
+    const changeMeme = () => {
+      randMeme = Math.floor(Math.random() * images.length);
+      img.src = images[randMeme];
+    };
+
+    l1.addEventListener("input", changeInput);
+    l2.addEventListener("input", changeInput2);
+    btn.addEventListener("click", changeMeme);
+  </script>
+</html>
